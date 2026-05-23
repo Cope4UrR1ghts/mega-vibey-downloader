@@ -16,7 +16,7 @@ A POGVCDTUM ( piece of garbage vibe-coded downloader that uses `megajs`.)
 
 ## Why it exists
 
-I hate Megas Download Quota so I needed a way to download without a limit. This is the result
+I hate Mega's Download Quota so I needed a way to download without a limit. This is the result.
 
 ## How to use
 
