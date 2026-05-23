@@ -29,8 +29,6 @@ I hate Megas Download Quota so I needed a way to download without a limit. This 
 
 ## Build it yourself
 
-If you just cloned this repo and `node_modules` is not included, run these commands from the project root:
-
 ```bash
 git clone https://github.com/Cope4UrR1ghts/mega-vibey-downloader.git
 cd mega-vibey-downloader/
