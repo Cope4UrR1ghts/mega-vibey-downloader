@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeDownloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Layout Container -->
+  <div class="app-layout">
+    
+    <!-- THE SIDEBAR -->
+    <aside class="sidebar glass-panel">
+      <div class="sidebar-brand">
+        <h2 class="text-accent">VibeDown</h2>
+        <small>FOSS Edition</small>
+      </div>
+      <nav class="sidebar-nav">
+        <!-- data-target must perfectly match the view IDs below -->
+        <a href="#" class="tab-link active" data-target="view-queue">⚡ Queue</a>
+        <a href="#" class="tab-link" data-target="view-completed">📂 Completed</a>
+        <a href="#" class="tab-link" data-target="view-settings">⚙️ Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <small>Status: <span style="color: #00ff88;">Online</span></small>
+      </div>
+    </aside>
+
+    <!-- THE MAIN CONTENT AREA -->
+    <main class="content">
+      
+      <!-- VIEW: QUEUE -->
+      <div id="view-queue" class="view-panel active">
+        <div class="glass-panel flex-shrink">
+          <h2 style="margin-top: 0;">Drop a Mega Link</h2>
+          <div class="input-group">
+            <input type="text" id="link-input" placeholder="https://mega.nz/folder/... or /file/...">
+            <button id="add-btn">Process Link</button>
+            <button id="batch-btn" class="btn-secondary" title="Paste multiple links at once">Batch 📄</button>
+          </div>
+        </div>
+
+        <div class="glass-panel mt-20 flex-col">
+          <div class="flex-between">
+            <h3 style="margin: 0;">Download Queue</h3>
+            <button id="start-queue-btn" class="btn-secondary">Start All Pending</button>
+          </div>
+          <div id="queue-container" class="scroll-container"></div>
+        </div>
+      </div>
+
+      <!-- VIEW: COMPLETED -->
+      <div id="view-completed" class="view-panel">
+        <div class="glass-panel flex-col">
+          <h3 style="margin-top: 0;">Completed Downloads</h3>
+          <div id="completed-container" class="scroll-container"></div>
+        </div>
+      </div>
+
+      <!-- VIEW: SETTINGS -->
+      <div id="view-settings" class="view-panel">
+        <div class="glass-panel flex-col">
+          <h3 style="margin-top: 0;">Settings</h3>
+          <div class="mt-20">
+            <label style="display:block; margin-bottom: 8px; color: var(--text-muted);">Global Save Directory</label>
+            <div class="input-group">
+              <input type="text" id="global-save-path" placeholder="Ask every time..." readonly>
+              <button id="set-global-path-btn" class="btn-secondary">Browse</button>
+              <button id="clear-global-path-btn" class="btn-secondary" style="background: #333;">Clear</button>
+            </div>
+            <small style="display:block; margin-top: 8px; color: var(--text-muted);">
+              If cleared, the app will ask you where to save each time you process a new link.
+            </small>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODAL: Folder Tree View -->
+  <div id="tree-modal" class="modal">
+    <div class="glass-panel" style="width: 500px; max-width: 90vw; max-height: 80vh; display: flex; flex-direction: column;">
+      <h2 class="text-accent" id="tree-title">Select Contents</h2>
+      <p style="margin-top: 0; color: var(--text-muted);">Check the files you want to download.</p>
+      
+      <div id="tree-container" class="tree-container"></div>
+      
+      <div class="button-group mt-20">
+        <button id="confirm-tree-btn">Confirm Selection</button>
+        <button id="cancel-tree-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Missing Key -->
+  <div id="key-modal" class="modal">
+    <div class="glass-panel text-center">
+      <h2 class="text-accent">Where's the damn key?!</h2>
+      <p>You gave me a locked door and no key. Paste it below.</p>
+      <input type="text" id="key-input" class="full-width mb-15" placeholder="Decryption key...">
+      <div class="button-group">
+        <button id="submit-key-btn">Fine, here it is</button>
+        <button id="cancel-key-btn" class="btn-secondary">Nevermind</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Batch Add -->
+  <div id="batch-modal" class="modal">
+    <div class="glass-panel" style="width: 500px; display: flex; flex-direction: column;">
+      <h2 class="text-accent">Batch Add Links</h2>
+      <p style="margin-top: 0; color: var(--text-muted);">Paste your Mega links below (one per line). <br><em>Tip: Set a Global Save Path in Settings first for zero interruptions.</em></p>
+      
+      <textarea id="batch-input" rows="8" placeholder="https://mega.nz/...&#10;https://mega.nz/..."></textarea>
+      
+      <div class="button-group mt-20">
+        <button id="submit-batch-btn">Process Batch</button>
+        <button id="cancel-batch-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js" defer></script>
+</body>
+</html>

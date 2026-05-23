@@ -1,0 +1,34 @@
+{
+  "name": "mega-vibey-downloader",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "A mega trashy client that completely sucks but gets the job done",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Cope4UrR1ghts",
+  "license": "BSD-3-Clause",
+  "build": {
+    "appId": "com.megavibeydownloader.foss",
+    "productName": "Mega-Vibey-Downloader",
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Network"
+    },
+    "win": {
+      "target": "portable"
+    }
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "megajs": "^1.2.2"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
